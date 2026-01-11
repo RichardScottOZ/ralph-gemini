@@ -287,6 +287,6 @@ echo -e "  5. Generate PROMPT.md and TODO.md from clarify-session.md"
 echo -e "  6. ${YELLOW}./ralph-execute.sh${NC} - Run the execution loop"
 echo ""
 echo -e "${BLUE}Project structure:${NC}"
-tree -L 2 "$PROJECT_NAME" 2>/dev/null || find "$PROJECT_NAME" -maxdepth 2 -print | sed 's|[^/]*/| |g'
+tree -L 2 "$PROJECT_NAME" 2>/dev/null || (cd "$PROJECT_NAME" && find . -maxdepth 2 -not -path './.git/*' | sort)
 echo ""
 echo -e "${GREEN}Happy coding with Ralph and Gemini! 🤖${NC}"

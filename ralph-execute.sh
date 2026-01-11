@@ -73,7 +73,7 @@ if ! command -v gemini &> /dev/null; then
     echo -e "${RED}Error: gemini CLI not found${NC}"
     echo "Please install Gemini CLI:"
     echo "  npm install -g @google/gemini-cli"
-    echo "  # or"
+    echo "  # or (on macOS/Linux)"
     echo "  brew install gemini-cli"
     echo ""
     echo "See: https://github.com/google-gemini/gemini-cli"
@@ -129,7 +129,7 @@ while [ $iteration -lt $MAX_ITERATIONS ]; do
     echo "=== Iteration $iteration - $(date) ===" >> "$LOG_FILE"
     
     # Execute gemini with the prompt
-    output=$(cat "$PROMPT_FILE" | gemini -p "$(cat -)" 2>&1) || {
+    output=$(gemini -p "$(cat "$PROMPT_FILE")" 2>&1) || {
         echo -e "${RED}Error: gemini command failed${NC}"
         echo "$output"
         echo "ERROR: gemini failed at iteration $iteration" >> "$LOG_FILE"
